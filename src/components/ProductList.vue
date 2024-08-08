@@ -41,7 +41,7 @@ onMounted(() => {
 
 <template>
   <div class="grid justify-center">
-    <div class="flex justify-around gap-20 m-5">
+    <div class="md:flex relative mb-14 justify-around gap-20 m-5 ">
       <Filter :categories="store.categories" @filterChange="handleFilterChange"/>
       <Sort />
     </div>
@@ -53,9 +53,9 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="grid justify-center">
+  <div class="grid justify-center ">
     <div
-      class="lg:max-h-[130rem] max-w-xl mx-auto grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 items-center lg:max-w-none my-4"
+      class="lg:max-h-[130rem] relative bottom-14 max-w-xl mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 items-center lg:max-w-none my-4"
     >
       <div v-if="store.error">{{ store.error }}</div>
       <ProductCard

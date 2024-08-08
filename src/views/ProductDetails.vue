@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useProductStore } from '../../store/store';
 import ProductSkeleton from './ProductSkeleton.vue';
-import turnBack from '../../public/turn-back.png'
+import turnBack from '../assets/turn-back.png'
 
 const store = useProductStore()
 

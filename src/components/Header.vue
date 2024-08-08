@@ -10,9 +10,9 @@ const toggleNavbar = () => {
 
 <template>
   <header class="sticky z-50 top-0">
-    <nav class="bg-purple-400 border-gray-200">
+    <nav class="bg-[#333333] border-gray-200">
       <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3 md:p-4"
       >
         <div> 
           <a href="/">
