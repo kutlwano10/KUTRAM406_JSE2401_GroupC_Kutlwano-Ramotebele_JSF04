@@ -6,7 +6,7 @@ import MobileFooter from './components/MobileFooter.vue'
 
 <template class="bg-[#e5e5e5]">
   <Header></Header>
-  <main class="p-3">
+  <main class="mx-6">
     <router-view></router-view>
   </main>
   <MobileFooter/>

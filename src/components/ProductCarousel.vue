@@ -9,11 +9,12 @@ import compare from "../assets/compare.png";
  */
 let props = defineProps({
   product: { type: Object, required: true },
-
+  
 });
 </script>
 
 <template>
+  
   <div
     class="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-[4px] overflow-hidden"
   >
@@ -49,7 +50,7 @@ let props = defineProps({
         <header class="mb-2 flex-2">
           <h2 class="text-lg line-clamp-2 font-extrabold leading-snug">
             <div
-              class="text-slate-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300"
+              class=" text-slate-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300"
             >
               {{ product.title }}
             </div>

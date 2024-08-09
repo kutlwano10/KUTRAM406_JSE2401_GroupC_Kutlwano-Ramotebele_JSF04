@@ -9,9 +9,9 @@
       role="status"
       class="bg-white max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700"
     >
-      <div class="flex items-center justify-center h-[250px] w-[200px] mb-4 bg-gray-300 rounded dark:bg-gray-700">
+      <div class="flex items-center justify-center h-[250px] w-[140px] lg:w-[200px] mb-4  bg-gray-300 rounded dark:bg-gray-700">
         <svg
-          class="w-10 h-10 text-gray-200 dark:text-gray-600"
+          class="w-10 h-10 text-[#333333] dark:text-gray-600"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"

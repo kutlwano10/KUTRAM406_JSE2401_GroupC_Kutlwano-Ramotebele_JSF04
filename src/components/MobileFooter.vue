@@ -2,7 +2,7 @@
 import LocalMallRoundedIcon from "@mui/icons-material/LocalMallRounded";
 </script>
 
-Copy<template>
+<template>
   <footer class="md:hidden fixed bottom-0 w-full">
     <nav class="bg-[#333333] border-gray-200 py-3">
       <div class="flex justify-around p-[8px]">
