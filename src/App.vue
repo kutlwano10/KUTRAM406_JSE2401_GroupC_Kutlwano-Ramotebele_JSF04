@@ -5,8 +5,8 @@ import MobileFooter from './components/MobileFooter.vue'
 </script>
 
 <template class="bg-[#e5e5e5]">
-  <Header></Header>
-  <main class="mx-6">
+  <Header ></Header>
+  <main class="mx-6 lg:mx-10">
     <router-view></router-view>
   </main>
   <MobileFooter/>

@@ -8,6 +8,7 @@ export const useProductStore = defineStore("product", {
     error: null,
     initialSort: "default",
     categories: [],
+    cart: JSON.parse(localStorage.getItem('cart' || [])),
     sortOptions: [
       { value: "default", label: "Default" },
       { value: "low", label: "Price: Low to High" },
@@ -45,6 +46,17 @@ export const useProductStore = defineStore("product", {
   },
 
   actions: {
+    /** This function sets all the carts in local Storage*/
+    saveCartToLocalStorage () {
+      localStorage.setItem('cart', JSON.stringify(this.cart))
+    },
+    addToCart (product) {
+      /**Pushing the Product into the cart and saving to local Storage */
+      this.cart.push(product)
+      this.saveCartToLocalStorage()
+
+    },
+
     setSort(sortValue) {
       this.initialSort = sortValue;
     },

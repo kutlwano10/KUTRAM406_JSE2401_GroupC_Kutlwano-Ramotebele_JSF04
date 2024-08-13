@@ -3,9 +3,11 @@ import { useProductStore } from "../../store/store";
 import ProductCard from "./ProductCard.vue";
 import CardSkeleton from "./CardSkeleton.vue";
 import ProductCarousel from "./ProductCarousel.vue";
+import background from "../assets/background.png"
 import { ref, onMounted, computed } from "vue";
 import Sort from "./Sort.vue";
 import Filter from "./Filter.vue";
+import search from '../assets/white-search.png'
 
 /**
  * initialize ProductStore
@@ -13,6 +15,10 @@ import Filter from "./Filter.vue";
 const store = useProductStore();
 
 const selectedCategory = ref("");
+
+const props = defineProps ({
+  image: Object,
+})
 
 /**
  * This will return the filtered out Products from the sortedProducts
@@ -32,6 +38,14 @@ const displayedProducts = computed(() => {
 const handleFilterChange = (category) => {
   selectedCategory.value = category;
 };
+/**
+ * 
+ * @param event -search input
+ */
+const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    searchProducts(searchTerm);
+  };
 
 onMounted(() => {
   store.fetchProducts();
@@ -46,7 +60,9 @@ onMounted(() => {
   >
   
     <div v-if="store.error">{{ store.error }}</div>
-    <div class="flex gap-4">
+
+    <!-- PRODUCT CAROUSEL -->
+    <div class="flex gap-4 scrollbar-hide">
       <ProductCarousel
         v-for="product in displayedProducts"
         :key="product.id"
@@ -56,6 +72,25 @@ onMounted(() => {
     </div>
   </div>
 
+  <!-- BACKGROUND IMG & SEARCHBAR -->
+  <div class="relative h-[50vh] bg-cover bg-center my-8">
+  <img :src="background" alt="backgroundImg" class="absolute inset-0 w-full h-full object-cover rounded-lg">
+  
+  <div class="relative flex  items-center justify-center h-full ">
+    <input
+      type="text"
+      placeholder="Search Here"
+      class="px-4 py-2 w-3/4 md:w-1/2 lg:w-1/3 text-lg bg-transparent border  border-[#FB8500]  text-white  shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+    <button
+      class=" py-1 bg-[#FB8500] text-white border  border-[#FB8500] shadow-md hover:bg-[#FFB703] focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+     <img class="w-9" :src="search" alt="" >
+    </button>
+  </div>
+</div>
+
+  <!-- FILTER & SORT -->
   <div class="md:flex relative mb-14 justify-around gap-20 ">
       <Filter
         :categories="store.categories"
@@ -74,9 +109,9 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="grid justify-center">
+    <!-- PRODUCTS GRID -->
     <div
-      class="lg:max-h-[130rem] relative bottom-14 max-w-xl mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 items-center lg:max-w-none my-4"
+      class="lg:max-h-[130rem] relative bottom-14 max-w-xl mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 items-center  lg:max-w-none my-4"
     >
       <div v-if="store.error">{{ store.error }}</div>
       <ProductCard
@@ -86,5 +121,13 @@ onMounted(() => {
         class=""
       />
     </div>
-  </div>
+  
 </template>
+
+<style scope>
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+</style>

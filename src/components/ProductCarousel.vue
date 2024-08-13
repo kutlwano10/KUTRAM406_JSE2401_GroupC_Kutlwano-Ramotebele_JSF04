@@ -21,7 +21,7 @@ let props = defineProps({
     <div class="flex align-center p-2">
       <button class="relative left-[85%]">
         <svg
-          class="h-5 w-5 hover:fill-red-500"
+          class="h-5 w-5 hover:fill-[#FFB703]"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -75,7 +75,7 @@ let props = defineProps({
           <button>
             <img class="w-8" :src="compare" alt="" />
           </button>
-          <button>
+          <button @click="updateCart">
             <img class="w-8" :src="cart" alt="" />
           </button>
         </div>

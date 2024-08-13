@@ -3,6 +3,13 @@ import { defineProps } from "vue";
 import { RouterLink } from "vue-router";
 import cart from "../assets/cart.png";
 import compare from "../assets/compare.png";
+import { useProductStore } from "../../store/store";
+
+const store =useProductStore();
+
+const addProductToCart = (product)=> {
+  store.addToCart(product)
+}
 
 /**
  * define Props to accept Product Data
@@ -20,7 +27,7 @@ let props = defineProps({
     <div class="flex align-center p-2">
       <button class="relative left-[85%]">
         <svg
-          class="h-5 w-5 hover:fill-red-500"
+          class="h-5 w-5 hover:fill-[#FFB703]"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -44,7 +51,7 @@ let props = defineProps({
       ><img class="object-contain h-32" :src="product.image" alt="Course 01"
     /></router-link>
 
-    <div class="flex-1 flex flex-col p-6">
+    <div class="flex-1 flex flex-col p-2">
       <div class="flex-1">
         <header class="mb-2 flex-2">
           <h2 class="text-lg line-clamp-2 font-extrabold leading-snug">
@@ -70,15 +77,16 @@ let props = defineProps({
             {{ product.category }}
           </span>
         </div>
-        <div class="justify-end space-x-2">
+        
+      </div>
+      <div class="flex justify-end space-x-2">
           <button>
             <img class="w-8" :src="compare" alt="" />
           </button>
-          <button>
+          <button @click="addProductToCart(product)">
             <img class="w-8" :src="cart" alt="" />
           </button>
         </div>
-      </div>
     </div>
   </div>
 </template>

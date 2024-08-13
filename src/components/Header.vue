@@ -1,10 +1,16 @@
 <script setup>
+
+
+import compare from '../assets/white-compare.png'
+import shoppingLogo from '../assets/shopping-bag.png'
 const toggleNavbar = () => {
     const dropDown = document.getElementById("navbar-dropdown");
     dropDown.classList.contains("hidden")
       ? dropDown.classList.remove("hidden")
       : dropDown.classList.add("hidden");
   };
+
+
 
 </script>
 
@@ -16,8 +22,8 @@ const toggleNavbar = () => {
       >
         <div> 
           <a href="/">
-            <button class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="" class="h-8" alt="" />
+            <button class="flex items-center  rtl:space-x-reverse">
+            <img :src="shoppingLogo" class="h-8" alt="" />
             <span
               class="self-center text-2xl font-semibold whitespace-nowrap text-white"
             >
@@ -57,19 +63,31 @@ const toggleNavbar = () => {
           <ul
             class="flex flex-col top-10 font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"
           >
-            <li>
-              <div
-                to=""
-                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >
-                Wishlist
-              </div>
-            </li>
-            <div to="">
+            <router-link :to="`/wishlist`">
+              <li>
+                <div
+                  to=""
+                  class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
+                >
+                  Wishlist
+                </div>
+              </li>
+            </router-link>
+
+            <router-link :to="`/compare`">
+              <li>
+                <div
+                  class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
+                >
+                  compare
+                </div>
+              </li>
+            </router-link>
+            <router-link :to="`/cart`">
               <li class="hidden lg:block md:block relative">
                 <div class="t-0 absolute left-3 -top-4">
                   <p
-                    class="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white"
+                    class="flex h-2 w-2 items-center justify-center rounded-full bg-[#FB8500] p-3 text-xs text-white"
                   >
                     2
                   </p>
@@ -89,18 +107,19 @@ const toggleNavbar = () => {
                   />
                 </svg>
               </li>
-            </div>
+            </router-link>
             <li>
               <div
-                class="lg:hidden md:hidden py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="lg:hidden md:hidden py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
               >
                 Cart
               </div>
             </li>
 
+
             <li>
               <div
-                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
               >
                 Login
               </div>

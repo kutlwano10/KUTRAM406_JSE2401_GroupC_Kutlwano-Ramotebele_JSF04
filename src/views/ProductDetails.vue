@@ -60,7 +60,7 @@ onMounted(() => {
         </span>
 
         <h3 class="text-xl md:text-2xl lg:text-2xl font-bold">${{store.singleProduct.price}}</h3>
-        <button class="bg-cyan-700 hover:bg-cyan-900 w-[90%] md:w-[14rem] lg:w-[14rem]  text-white font-bold py-2 px-4 rounded">
+        <button class="bg-[#FFB703] hover:bg-[#FB8500] md:w-[14rem] lg:w-[14rem]  text-white font-bold py-2 px-4 rounded">
           Add To Cart
         </button>
         <h2 class="text-lg font-bold">Description</h2>
