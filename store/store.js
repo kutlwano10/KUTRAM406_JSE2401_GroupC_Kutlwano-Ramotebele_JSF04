@@ -8,7 +8,7 @@ export const useProductStore = defineStore("product", {
     error: null,
     initialSort: "default",
     categories: [],
-    cart: JSON.parse(localStorage.getItem('cart' || [])),
+    cart: JSON.parse(localStorage.getItem('cart' ))|| [],
     sortOptions: [
       { value: "default", label: "Default" },
       { value: "low", label: "Price: Low to High" },
