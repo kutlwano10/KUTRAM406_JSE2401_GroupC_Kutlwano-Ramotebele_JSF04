@@ -62,7 +62,7 @@ onMounted(() => {
     <div v-if="store.error">{{ store.error }}</div>
 
     <!-- PRODUCT CAROUSEL -->
-    <div class="flex gap-4 scrollbar-hide">
+    <div class="flex gap-4 overflow-x-auto scrollbar-hide">
       <ProductCarousel
         v-for="product in displayedProducts"
         :key="product.id"
@@ -128,6 +128,7 @@ onMounted(() => {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+  
 }
 
 </style>

@@ -79,7 +79,7 @@ let props = defineProps({
         </div>
         
       </div>
-      <div class="flex justify-end space-x-2">
+      <div class="flex justify-end gap-3 space-x-2">
           <button>
             <img class="w-8" :src="compare" alt="" />
           </button>

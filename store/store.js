@@ -8,7 +8,7 @@ export const useProductStore = defineStore("product", {
     error: null,
     initialSort: "default",
     categories: [],
-    cart: JSON.parse(localStorage.getItem('cart' ))|| [],
+    cart: JSON.parse(localStorage.getItem("cart")) || [],
     sortOptions: [
       { value: "default", label: "Default" },
       { value: "low", label: "Price: Low to High" },
@@ -24,13 +24,13 @@ export const useProductStore = defineStore("product", {
 
       return [...state.products].sort((a, b) => {
         switch (state.initialSort) {
-          case 'low':
+          case "low":
             return a.price - b.price;
-          case 'high':
+          case "high":
             return b.price - a.price;
-          case 'a-z':
+          case "a-z":
             return a.title.localeCompare(b.title);
-          case 'z-a':
+          case "z-a":
             return b.title.localeCompare(a.title);
           default:
             return 0;
@@ -40,21 +40,26 @@ export const useProductStore = defineStore("product", {
     filteredProducts: (state) => {
       return (categoryId) => {
         if (!categoryId) return state.sortedProducts;
-        return state.sortedProducts.filter(product => product.category === categoryId);
+        return state.sortedProducts.filter(
+          (product) => product.category === categoryId
+        );
       };
     },
   },
 
   actions: {
     /** This function sets all the carts in local Storage*/
-    saveCartToLocalStorage () {
-      localStorage.setItem('cart', JSON.stringify(this.cart))
+    saveCartToLocalStorage() {
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
-    addToCart (product) {
+    addToCart(product) {
       /**Pushing the Product into the cart and saving to local Storage */
-      this.cart.push(product)
-      this.saveCartToLocalStorage()
-
+      this.cart.push(product);
+      this.saveCartToLocalStorage();
+    },
+    clearCart() {
+      this.cart = [];
+      this.saveCartToLocalStorage();
     },
 
     setSort(sortValue) {
@@ -68,7 +73,9 @@ export const useProductStore = defineStore("product", {
       try {
         const res = await fetch(`https://fakestoreapi.com/products/categories`);
         if (!res.ok) {
-          throw new Error("Data fetching failed, please check your network connection");
+          throw new Error(
+            "Data fetching failed, please check your network connection"
+          );
         }
         const data = await res.json();
         this.categories = data;
@@ -86,7 +93,9 @@ export const useProductStore = defineStore("product", {
       try {
         const res = await fetch(`https://fakestoreapi.com/products/${id}`);
         if (!res.ok) {
-          throw new Error("Data fetching failed, please check your network connection");
+          throw new Error(
+            "Data fetching failed, please check your network connection"
+          );
         }
         const data = await res.json();
         this.singleProduct = data;
@@ -104,7 +113,9 @@ export const useProductStore = defineStore("product", {
       try {
         const res = await fetch("https://fakestoreapi.com/products");
         if (!res.ok) {
-          throw new Error("Data fetching failed, please check your network connection");
+          throw new Error(
+            "Data fetching failed, please check your network connection"
+          );
         }
         const data = await res.json();
         this.products = data;
