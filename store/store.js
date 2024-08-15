@@ -57,6 +57,12 @@ export const useProductStore = defineStore("product", {
       this.cart.push(product);
       this.saveCartToLocalStorage();
     },
+
+    removeCartProduct (productId) {
+      this.cart = this.cart.filter(item=> item.id !== productId)
+      this.saveCartToLocalStorage()
+
+    }, 
     clearCart() {
       this.cart = [];
       this.saveCartToLocalStorage();

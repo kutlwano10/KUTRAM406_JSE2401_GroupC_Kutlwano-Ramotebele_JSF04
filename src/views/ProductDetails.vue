@@ -30,7 +30,7 @@ onMounted(() => {
   </div>
   <div
     v-else-if="store.singleProduct"
-    class="mt-6 sm:mt-8 lg:flex lg:items-start lg:max-w-6xl xl:max-w-7xl"
+    class="mt-12 sm:mt-8 lg:flex lg:items-start lg:max-w-6xl xl:max-w-7xl bottom-20 relative "
   >
     <div class="mx-auto w-2/5 flex-none">
       <img :src="store.singleProduct.image" alt="" class="w-[90%] h-[90%]" />
@@ -66,9 +66,10 @@ onMounted(() => {
       <h3 class="text-xl md:text-2xl lg:text-2xl font-bold">
         R {{ store.singleProduct.price }}
       </h3>
-      <Button text="check out" :func="clickedButton"/>
+      
       <h2 class="text-lg font-bold">Description</h2>
       <p>{{ store.singleProduct.description }}</p>
+      <Button text="ADD TO CARD" :func="clickedButton"/>
     </div>
   </div>
 </template>
