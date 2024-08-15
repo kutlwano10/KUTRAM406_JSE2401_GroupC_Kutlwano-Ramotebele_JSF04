@@ -31,7 +31,7 @@ onMounted(() => {
         <tbody v-for="product in store.cart">
           <tr class="border-b border-gray-600">
             <td class="p-4">
-              <button @click="store.removeCartProduct" class="text-red-500 text-xl cursor-pointer">X</button>
+              <button @click="()=>store.removeCartProduct(product.id)" class="text-red-500 text-xl cursor-pointer">X</button>
             </td>
             <td class="flex items-center justify-center gap-4 p-4">
               <img
