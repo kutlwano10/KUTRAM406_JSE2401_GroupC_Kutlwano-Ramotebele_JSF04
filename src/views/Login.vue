@@ -8,6 +8,7 @@ const store = useProductStore();
 const loginError = ref('')
 
 const login = async () => {
+
     if(!store.username || !store.password) {
         loginError.value ="Please enter both username and password"
         return

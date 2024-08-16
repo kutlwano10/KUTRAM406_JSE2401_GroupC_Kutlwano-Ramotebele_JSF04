@@ -61,12 +61,13 @@ export const useProductStore = defineStore("product", {
       try {
         const response = await fetch('https://fakestoreapi.com/auth/login', {
           method: 'POST',
-          hearders: {
+          headers: {
             'content-Type': 'application/json'
           },
           body: JSON.stringify({username, password})
         })
         console.log(response)
+        console.log(username,password)
         if(!response.ok) {
           throw new Error ("Login Failed")
         }
