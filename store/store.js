@@ -20,6 +20,9 @@ export const useProductStore = defineStore("product", {
     username: '',
     userPassword: '',
     showLoginModal: false,
+    isLoggedin: false,
+    user:null,
+    token:null,
   }),
 
   getters: {
@@ -53,10 +56,36 @@ export const useProductStore = defineStore("product", {
 
   actions: {
 
-    login () {
-      console.log('logged in')
+    async login (username, password) {
+      try {
+        const response = await fetch('https://fakestoreapi.com/auth/login', {
+          method: 'POST',
+          hearders: {
+            'content-Type': 'application/json'
+          },
+          body: JSON.stringify({username, password})
+        })
+        if(!response.ok) {
+          throw new Error ("Loin Failed")
+        }
+        const data = await response.json()
+        this.token =data.token
+        this.isLoggedin = true
+        this.user = {username}
+        return true
+        
+      } catch (error) {
+        console.error('Login Error:', error)
+        return false
+        
+      }
     },
 
+    logout() {
+      this.isLoggedin =false
+      this.user = null
+      this.token = null
+    },
     /** This function sets all the carts in local Storage*/
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
