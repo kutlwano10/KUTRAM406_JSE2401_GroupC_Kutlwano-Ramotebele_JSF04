@@ -18,7 +18,7 @@ export const useProductStore = defineStore("product", {
     ],
 
     username: '',
-    userPassword: '',
+    password: '',
     showLoginModal: false,
     isLoggedin: false,
     user:null,
@@ -69,7 +69,9 @@ export const useProductStore = defineStore("product", {
           throw new Error ("Loin Failed")
         }
         const data = await response.json()
+
         this.token =data.token
+        console.log(this.token)
         this.isLoggedin = true
         this.user = {username}
         return true

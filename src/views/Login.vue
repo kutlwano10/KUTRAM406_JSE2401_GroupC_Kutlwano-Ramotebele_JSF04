@@ -14,6 +14,25 @@ const login = async () => {
     }
     store.loading = true
     loginError.value = ''
+
+    /**I am checking if the Correct data is checked and i want to get the token */
+
+    try {
+        const successfulLoggedIn = await store.login(store.username, store.password)
+        
+        if (successfulLoggedIn) {
+            store.showLoginModal = false
+            console.log('Login Successful, Token', store.token)
+        }else {
+            loginError.value = 'Invalid username or password'
+        }
+        
+    } catch (error) {
+        loginError.value = "An error occured . Please try again ."
+        
+    } finally {
+        store.loading =false
+    }
 }
 
 </script>
@@ -26,9 +45,10 @@ const login = async () => {
       <label for="username">Username :</label>
       <input v-model="store.username" placeholder="Username" />
       <label for="username">Password :</label>
-      <input v-model="store.userPassword" type="password" placeholder="Password" />
-      <Button class="text-lg" text="Sign In" :func="()=>store.login"/>
+      <input v-model="store.password" type="password" placeholder="Password" />
+      <Button class="text-lg" text="Sign In" :func="()=>login"/>
       <button @click="store.showLoginModal = false">Close</button>
+      <p v-if="loginError">{{ loginError }}</p>
       
     </div>
   </div>
