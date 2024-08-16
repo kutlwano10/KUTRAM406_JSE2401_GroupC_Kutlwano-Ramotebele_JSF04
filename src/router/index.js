@@ -4,6 +4,7 @@ import Cart from "../views/Cart.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import Compare from "../views/Compare.vue";
 import Wishlist from "../views/Wishlist.vue";
+import Login from "../views/Login.vue"
 
 const routes = [
   {

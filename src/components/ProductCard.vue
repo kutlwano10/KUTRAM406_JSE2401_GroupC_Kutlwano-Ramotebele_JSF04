@@ -54,7 +54,7 @@ let props = defineProps({
     <div class="flex-1 flex flex-col p-2">
       <div class="flex-1">
         <header class="mb-2 flex-2">
-          <h2 class="text-lg line-clamp-2 font-extrabold leading-snug">
+          <h2 class="text-sm line-clamp-2 font-extrabold leading-snug">
             <div
               class="text-slate-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300"
             >

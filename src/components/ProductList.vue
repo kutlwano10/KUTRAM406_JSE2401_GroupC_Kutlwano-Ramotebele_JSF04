@@ -8,6 +8,7 @@ import { ref, onMounted, computed } from "vue";
 import Sort from "./Sort.vue";
 import Filter from "./Filter.vue";
 import search from '../assets/white-search.png'
+import Login from "../views/Login.vue";
 
 /**
  * initialize ProductStore
@@ -71,6 +72,8 @@ onMounted(() => {
       />
     </div>
   </div>
+
+  <Login/>
 
   <!-- BACKGROUND IMG & SEARCHBAR -->
   <div class="relative h-[50vh] bg-cover bg-center my-8">

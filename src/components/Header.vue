@@ -1,5 +1,9 @@
 <script setup>
 
+import { useProductStore } from '../../store/store';
+
+const store = useProductStore()
+
 
 import compare from '../assets/white-compare.png'
 import shoppingLogo from '../assets/shopping-bag.png'
@@ -118,7 +122,7 @@ const toggleNavbar = () => {
 
 
             <li>
-              <div
+              <div @click="store.showLoginModal = true"
                 class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
               >
                 Login

@@ -23,20 +23,20 @@ onMounted(() => {
 
 <template>
   <router-link to=".."
-    ><img class="w-[32px] m-4" :src="turnBack" alt=""
+    ><img class=" w-[30px] " :src="turnBack" alt=""
   /></router-link>
   <div v-if="store.loading">
     <ProductSkeleton />
   </div>
   <div
     v-else-if="store.singleProduct"
-    class="mt-12 sm:mt-8 lg:flex lg:items-start lg:max-w-6xl xl:max-w-7xl bottom-20 relative "
+    class="mt-20 md:mt-32 sm:mt-8 lg:flex lg:items-start lg:max-w-6xl xl:max-w-7xl bottom-20 relative "
   >
     <div class="mx-auto w-2/5 flex-none">
       <img :src="store.singleProduct.image" alt="" class="w-[90%] h-[90%]" />
     </div>
     <div class="mx-auto w-[90%] space-y-2">
-      <h1 class="text-2xl md:text-4xl lg:text-4xl font-bold">
+      <h1 class="text-md md:text-4xl lg:text-4xl font-bold">
         {{ store.singleProduct.title }}
       </h1>
 
@@ -68,7 +68,9 @@ onMounted(() => {
       </h3>
       
       <h2 class="text-lg font-bold">Description</h2>
-      <p>{{ store.singleProduct.description }}</p>
+      <div class="border p-4">
+        <p class="">{{ store.singleProduct.description }}</p>
+      </div>
       <Button text="ADD TO CARD" :func="clickedButton"/>
     </div>
   </div>

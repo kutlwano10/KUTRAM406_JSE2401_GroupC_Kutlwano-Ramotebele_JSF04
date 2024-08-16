@@ -16,6 +16,10 @@ export const useProductStore = defineStore("product", {
       { value: "a-z", label: "Name: A to Z" },
       { value: "z-a", label: "Name: Z to A" },
     ],
+
+    username: '',
+    userPassword: '',
+    showLoginModal: false,
   }),
 
   getters: {
@@ -48,6 +52,11 @@ export const useProductStore = defineStore("product", {
   },
 
   actions: {
+
+    login () {
+      console.log('logged in')
+    },
+
     /** This function sets all the carts in local Storage*/
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
