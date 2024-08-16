@@ -8,7 +8,7 @@ const store = useProductStore();
 const loginError = ref('')
 
 const login = async () => {
-    if(!username.value || !Password.value) {
+    if(!store.username || !store.password) {
         loginError.value ="Please enter both username and password"
         return
     }
@@ -46,7 +46,7 @@ const login = async () => {
       <input v-model="store.username" placeholder="Username" />
       <label for="username">Password :</label>
       <input v-model="store.password" type="password" placeholder="Password" />
-      <Button class="text-lg" text="Sign In" :func="()=>login"/>
+      <Button class="text-lg" text="Sign In" :func="login"/>
       <button @click="store.showLoginModal = false">Close</button>
       <p v-if="loginError">{{ loginError }}</p>
       

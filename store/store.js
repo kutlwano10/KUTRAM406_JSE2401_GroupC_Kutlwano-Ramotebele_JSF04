@@ -57,6 +57,7 @@ export const useProductStore = defineStore("product", {
   actions: {
 
     async login (username, password) {
+      
       try {
         const response = await fetch('https://fakestoreapi.com/auth/login', {
           method: 'POST',
@@ -65,12 +66,13 @@ export const useProductStore = defineStore("product", {
           },
           body: JSON.stringify({username, password})
         })
+        console.log(response)
         if(!response.ok) {
-          throw new Error ("Loin Failed")
+          throw new Error ("Login Failed")
         }
         const data = await response.json()
 
-        this.token =data.token
+        this.token = data.token
         console.log(this.token)
         this.isLoggedin = true
         this.user = {username}
