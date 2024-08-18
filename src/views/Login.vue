@@ -1,11 +1,14 @@
 <script setup>
-import {ref} from "vue"
-import { Password } from '@mui/icons-material';
+import {onMounted, ref} from "vue"
 import { useProductStore } from '../../store/store';
 import Button from '../components/Button.vue';
 const store = useProductStore();
 
 const loginError = ref('')
+
+onMounted(()=>{
+  store.initializeAuth()
+})
 
 const login = async () => {
 

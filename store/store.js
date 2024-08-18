@@ -91,6 +91,18 @@ export const useProductStore = defineStore("product", {
       }
     },
 
+    initializeAuth() {
+      const storedUser = localStorage.getItem('user')
+      const storedToken = localStorage.getItem('token')
+
+      if (storedUser && storedToken) {
+        this.user = JSON.parse(storedUser)
+        this.token = storedToken
+        this.isLoggedin = true
+      }
+
+    },
+
     logout() {
       this.isLoggedin =false
       this.user = null
