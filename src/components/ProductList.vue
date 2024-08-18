@@ -63,12 +63,12 @@ onMounted(() => {
     <div v-if="store.error">{{ store.error }}</div>
 
     <!-- PRODUCT CAROUSEL -->
-    <div class="flex gap-4 overflow-x-auto scrollbar-hide">
+    <div class="flex gap-4 overflow-x-auto scrollbar-hide mx-2">
       <ProductCarousel
         v-for="product in displayedProducts"
         :key="product.id"
         :product="product"
-        class="flex-shrink-0 w-64"
+        class="flex-shrink-0 w-60"
       />
     </div>
   </div>
@@ -76,7 +76,7 @@ onMounted(() => {
   <Login/>
 
   <!-- BACKGROUND IMG & SEARCHBAR -->
-  <div class="relative h-[50vh] bg-cover bg-center my-8">
+  <div class="relative h-[40vh] bg-cover bg-center my-8 mx-2 lg:mx-[9%]">
   <img :src="background" alt="backgroundImg" class="absolute inset-0 w-full h-full object-cover rounded-lg">
   
   <div class="relative flex  items-center justify-center h-full ">
@@ -114,7 +114,7 @@ onMounted(() => {
 
     <!-- PRODUCTS GRID -->
     <div
-      class="lg:max-h-[130rem] relative bottom-14 max-w-xl mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 items-center  lg:max-w-none my-4"
+      class="lg:max-h-[130rem] relative bottom-14 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 justify-center md:grid-cols-3 lg:mx-[9%] items-center mx-2 lg:max-w-none my-4"
     >
       <div v-if="store.error">{{ store.error }}</div>
       <ProductCard

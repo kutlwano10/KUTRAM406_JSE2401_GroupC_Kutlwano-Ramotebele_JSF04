@@ -60,7 +60,7 @@ const login = async () => {
   position: fixed;
   z-index: 1;
   left: 0;
-  top: 0;
+  top: 4rem;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -74,15 +74,15 @@ const login = async () => {
   border: 1px solid #888;
   width: 80%;
   max-width: 500px;
-  height: 50%;
+  height: 60%;
 }
 
 input {
     text-align: center;
     border: solid 1px gray;
     border-radius: 4px;
-    width: 50%;
     padding: 3px;
+    width: 60%;
 
 }
 </style>

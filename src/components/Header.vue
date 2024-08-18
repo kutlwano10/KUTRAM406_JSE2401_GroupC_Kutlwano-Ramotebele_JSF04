@@ -122,16 +122,16 @@ const toggleNavbar = () => {
 
 
             <li>
-              <div @click="store.showLoginModal = true"
+              <div v-if="!store.isLoggedin" @click="store.showLoginModal = true"
                 class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
               >
                 LogIn
               </div>
-              <div  v-if="store.isLoggedin"
-                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
+              <div v-else
+                class="flex items-center space-x-2 py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#FFB703] md:p-0"
               >
-                Welcome, {{ store.username }}!
-                <button @click="store.logout"></button>
+                <span class="md:hover:text-[#FFB703]">Welcome, {{ store.user.username }}!</span>
+                <button class="text-white hover:text-[#FFB703] focus:outline-none" @click="store.logout">Logout</button>
               </div>
             </li>
             
