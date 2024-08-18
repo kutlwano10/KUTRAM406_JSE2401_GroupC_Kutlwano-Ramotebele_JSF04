@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { stringify } from "postcss";
 
 export const useProductStore = defineStore("product", {
   state: () => ({
@@ -77,6 +78,10 @@ export const useProductStore = defineStore("product", {
         console.log(this.token)
         this.isLoggedin = true
         this.user = {username}
+        
+
+        localStorage.setItem('user', JSON.stringify(this.user))
+        localStorage.setItem('token', this.token)
         return true
         
       } catch (error) {

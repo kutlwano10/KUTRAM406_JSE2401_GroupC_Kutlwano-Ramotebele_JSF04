@@ -73,6 +73,8 @@ onMounted(() => {
     </div>
   </div>
 
+   <!--Login component-->
+
   <Login/>
 
   <!-- BACKGROUND IMG & SEARCHBAR -->
