@@ -10,6 +10,7 @@ export const useProductStore = defineStore("product", {
     initialSort: "default",
     categories: [],
     cart: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).cart : [],
+    wishlist: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).wishlist : [],
     sortOptions: [
       { value: "default", label: "Default" },
       { value: "low", label: "Price: Low to High" },
@@ -99,7 +100,7 @@ export const useProductStore = defineStore("product", {
       /**The user info that is stored on LocalStorage as an Object */
       const storedAuthUser = JSON.parse(localStorage.getItem('AuthUser'))
 
-      if (storedAuthUser && storedAuthUser.token) {
+      if (storedAuthUser.token) {
         this.user = storedAuthUser.user
         this.token = storedAuthUser.token
         this.isLoggedin = true
@@ -111,8 +112,11 @@ export const useProductStore = defineStore("product", {
       this.isLoggedin = false
       this.user = null
       this.token = null
+ 
+      let authuser = JSON.parse(localStorage.getItem('AuthUser'));
 
-      localStorage.removeItem('AuthUser')
+      authuser.token = false;
+      localStorage.setItem('AuthUser',JSON.stringify(authuser));
       
     },
 
@@ -125,8 +129,16 @@ export const useProductStore = defineStore("product", {
 
     /** This function sets all the carts in local Storage*/
     saveAuthToLocalStorage() {
-      localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart}))
+      localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart, wishlist: this.wishlist}))
     },
+    
+    addToWishlist(product) {
+      /**Pushing the Product into the wishlist and saving to local Storage */
+      this.wishlist.push(product);
+      
+      this.saveAuthToLocalStorage();
+    },
+
     addToCart(product) {
       /**Pushing the Product into the cart and saving to local Storage */
       this.cart.push(product);
