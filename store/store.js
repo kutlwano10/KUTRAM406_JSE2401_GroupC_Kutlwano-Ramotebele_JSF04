@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { stringify } from "postcss";
+
 
 export const useProductStore = defineStore("product", {
   state: () => ({
@@ -9,7 +9,7 @@ export const useProductStore = defineStore("product", {
     error: null,
     initialSort: "default",
     categories: [],
-    cart: JSON.parse(localStorage.getItem("cart")) || [],
+    cart: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).cart : [],
     sortOptions: [
       { value: "default", label: "Default" },
       { value: "low", label: "Price: Low to High" },
@@ -78,11 +78,10 @@ export const useProductStore = defineStore("product", {
         console.log(this.token)
         this.isLoggedin = true
         this.user = {username}
-        
-
+        this.saveAuthToLocalStorage()
         // localStorage.setItem('user', JSON.stringify(this.user))
         // localStorage.setItem('token', this.token)
-        localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart}))
+        
         return true
         
       } catch (error) {
@@ -98,16 +97,11 @@ export const useProductStore = defineStore("product", {
 
     initializeAuth() {
       /**The user info that is stored on LocalStorage as an Object */
-      const storedAuthUser = localStorage.getItem('AuthUser')
+      const storedAuthUser = JSON.parse(localStorage.getItem('AuthUser'))
 
-      const storedUser = localStorage.getItem('AuthUser', this.user)
-      const storedToken = localStorage.getItem('AuthUser', this.token)
-      console.log(storedUser)
-
-
-      if (storedAuthUser) {
-        this.user = JSON.parse(storedUser)
-        this.token = storedToken
+      if (storedAuthUser && storedAuthUser.token) {
+        this.user = storedAuthUser.user
+        this.token = storedAuthUser.token
         this.isLoggedin = true
       }
 
@@ -130,23 +124,25 @@ export const useProductStore = defineStore("product", {
 
 
     /** This function sets all the carts in local Storage*/
-    saveCartToLocalStorage() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+    saveAuthToLocalStorage() {
+      localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart}))
     },
     addToCart(product) {
       /**Pushing the Product into the cart and saving to local Storage */
       this.cart.push(product);
-      this.saveCartToLocalStorage();
+      // localStorage.setItem('AuthUser',JSON.stringify(this.cart));
+      this.saveAuthToLocalStorage();
     },
 
     removeCartProduct (productId) {
       this.cart = this.cart.filter(item=> item.id !== productId)
-      this.saveCartToLocalStorage()
+      this.saveAuthToLocalStorage()
 
     }, 
     clearCart() {
       this.cart = [];
-      this.saveCartToLocalStorage();
+      this.saveAuthToLocalStorage()
+      
     },
 
     setSort(sortValue) {
