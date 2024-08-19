@@ -100,7 +100,7 @@ export const useProductStore = defineStore("product", {
       /**The user info that is stored on LocalStorage as an Object */
       const storedAuthUser = JSON.parse(localStorage.getItem('AuthUser'))
 
-      if (storedAuthUser.token) {
+      if (storedAuthUser &&storedAuthUser.token) {
         this.user = storedAuthUser.user
         this.token = storedAuthUser.token
         this.isLoggedin = true
@@ -131,12 +131,18 @@ export const useProductStore = defineStore("product", {
     saveAuthToLocalStorage() {
       localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart, wishlist: this.wishlist}))
     },
-    
+
     addToWishlist(product) {
       /**Pushing the Product into the wishlist and saving to local Storage */
       this.wishlist.push(product);
       
       this.saveAuthToLocalStorage();
+    },
+    /**Removes The Product from Wishlist and saves the update to localStorage */
+    removeWishlistProduct (productId) {
+      this.wishlist = this.wishlist.filter(item=> item.id !== productId)
+      this.saveAuthToLocalStorage()
+
     },
 
     addToCart(product) {

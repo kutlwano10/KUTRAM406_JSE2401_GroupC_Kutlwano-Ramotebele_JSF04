@@ -10,26 +10,27 @@ const store =useProductStore();
 const addProductToCart = (product)=> {
   store.addToCart(product)
 }
-const AddProductToWishlist =(product)=> {
-  store.addToWishlist(product)
-}
+
 
 /**
  * define Props to accept Product Data
  */
 let props = defineProps({
   product: { type: Object, required: true },
+  func: {type: Function}
+  
 
 });
 </script>
 
 <template>
+  
   <div
     class="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-[4px] overflow-hidden"
   >
     <div class="flex align-center p-2">
-      <button class="relative left-[85%]" @click="AddProductToWishlist">
-        <svg
+      <button class="relative left-[85%]" @click="func" >
+        <svg 
           class="h-5 w-5 hover:fill-[#FFB703]"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

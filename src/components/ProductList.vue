@@ -21,6 +21,8 @@ const props = defineProps({
   image: Object,
 });
 
+
+
 /**
  * This will return the filtered out Products from the sortedProducts
  */
@@ -70,9 +72,6 @@ onMounted(() => {
     </div>
   </div>
 
-  <!--Login component-->
-
-  <Login />
 
   <!-- BACKGROUND IMG & SEARCHBAR -->
   <div class="relative h-[40vh] bg-cover bg-center my-8 mx-2 lg:mx-[9%]">
@@ -112,6 +111,7 @@ onMounted(() => {
   </div>
 
   <!-- PRODUCTS GRID -->
+  
   <div
     class="lg:max-h-[130rem] relative bottom-14 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 justify-center md:grid-cols-3 lg:mx-[9%] items-center mx-2 lg:max-w-none my-4"
   >
@@ -120,7 +120,9 @@ onMounted(() => {
       v-for="product in displayedProducts"
       :key="product.id"
       :product="product"
+      :func="()=> store.addToWishlist(product)"
       class=""
+      
     />
   </div>
 </template>
