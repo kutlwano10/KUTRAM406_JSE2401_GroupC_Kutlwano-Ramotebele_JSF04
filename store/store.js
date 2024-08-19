@@ -82,7 +82,7 @@ export const useProductStore = defineStore("product", {
 
         // localStorage.setItem('user', JSON.stringify(this.user))
         // localStorage.setItem('token', this.token)
-        localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token}))
+        localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart}))
         return true
         
       } catch (error) {
@@ -97,10 +97,15 @@ export const useProductStore = defineStore("product", {
      */
 
     initializeAuth() {
-      const storedUser = localStorage.getItem('user')
-      const storedToken = localStorage.getItem('token')
+      /**The user info that is stored on LocalStorage as an Object */
+      const storedAuthUser = localStorage.getItem('AuthUser')
 
-      if (storedUser && storedToken) {
+      const storedUser = localStorage.getItem('AuthUser', this.user)
+      const storedToken = localStorage.getItem('AuthUser', this.token)
+      console.log(storedUser)
+
+
+      if (storedAuthUser) {
         this.user = JSON.parse(storedUser)
         this.token = storedToken
         this.isLoggedin = true
@@ -113,8 +118,8 @@ export const useProductStore = defineStore("product", {
       this.user = null
       this.token = null
 
-      localStorage.removeItem('user')
-      localStorage.removeItem('token')
+      localStorage.removeItem('AuthUser')
+      
     },
 
     checkAuth() {
