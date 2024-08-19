@@ -80,8 +80,9 @@ export const useProductStore = defineStore("product", {
         this.user = {username}
         
 
-        localStorage.setItem('user', JSON.stringify(this.user))
-        localStorage.setItem('token', this.token)
+        // localStorage.setItem('user', JSON.stringify(this.user))
+        // localStorage.setItem('token', this.token)
+        localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token}))
         return true
         
       } catch (error) {
@@ -90,6 +91,10 @@ export const useProductStore = defineStore("product", {
         
       }
     },
+
+    /**
+     * Function that makes sure the user stay logged in when you refresh the page
+     */
 
     initializeAuth() {
       const storedUser = localStorage.getItem('user')
@@ -104,13 +109,21 @@ export const useProductStore = defineStore("product", {
     },
 
     logout() {
-      this.isLoggedin =false
+      this.isLoggedin = false
       this.user = null
       this.token = null
 
       localStorage.removeItem('user')
       localStorage.removeItem('token')
     },
+
+    checkAuth() {
+      return this.isLoggedin && this.token !== null
+
+    },
+
+
+
     /** This function sets all the carts in local Storage*/
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
