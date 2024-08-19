@@ -16,7 +16,7 @@ onMounted(() => {
   <router-link to=".."
     ><img class="w-[30px] m-4" :src="turnBack" alt=""
   /></router-link>
-  <Login/>
+  
   <Button class="" text="Clear Cart" :func="store.clearCart" />
   <div class="relative top-20" v-if="store.cart.length > 0">
     <div class="relative bottom-20  text-black md:p-4 rounded-lg">

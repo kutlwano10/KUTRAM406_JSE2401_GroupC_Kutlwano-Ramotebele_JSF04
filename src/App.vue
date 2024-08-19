@@ -1,6 +1,7 @@
 <script setup>
 import Header from "./components/Header.vue";
 import MobileFooter from './components/MobileFooter.vue'
+import Login from "./views/Login.vue";
 
 </script>
 
@@ -8,6 +9,8 @@ import MobileFooter from './components/MobileFooter.vue'
   <Header ></Header>
   <main class=" ">
     <router-view></router-view>
+    <Login/>
+    
   </main>
   <MobileFooter/>
 

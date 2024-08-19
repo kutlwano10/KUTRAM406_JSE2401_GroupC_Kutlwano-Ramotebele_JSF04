@@ -107,6 +107,9 @@ export const useProductStore = defineStore("product", {
       this.isLoggedin =false
       this.user = null
       this.token = null
+
+      localStorage.removeItem('user')
+      localStorage.removeItem('token')
     },
     /** This function sets all the carts in local Storage*/
     saveCartToLocalStorage() {
