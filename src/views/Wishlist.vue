@@ -34,7 +34,7 @@ const selectedCategory = ref("");
       v-for="product in store.wishlist"
       :key="product.id"
       :product="product"
-      :func="()=> store.removeWishlistProduct(product)"
+      :func="()=> store.removeWishlistProduct(product.id)"
     />
   </div>
 </template>

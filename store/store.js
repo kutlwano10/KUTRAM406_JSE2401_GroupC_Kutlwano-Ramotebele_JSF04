@@ -135,11 +135,12 @@ export const useProductStore = defineStore("product", {
     addToWishlist(product) {
       /**Pushing the Product into the wishlist and saving to local Storage */
       this.wishlist.push(product);
-      
+      console.log('addtwl')
       this.saveAuthToLocalStorage();
     },
     /**Removes The Product from Wishlist and saves the update to localStorage */
     removeWishlistProduct (productId) {
+      console.log('Wishlist removed')
       this.wishlist = this.wishlist.filter(item=> item.id !== productId)
       this.saveAuthToLocalStorage()
 
