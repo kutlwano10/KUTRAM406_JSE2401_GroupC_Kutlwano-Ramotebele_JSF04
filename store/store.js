@@ -170,7 +170,7 @@ export const useProductStore = defineStore("product", {
 
     removeCompareProduct (productId) {
       console.log('compare removed')
-      this.compare = this.comapre.filter(item=> item.id !== productId)
+      this.compare = this.compare.filter(item=> item.id !== productId)
       this.saveAuthToLocalStorage()
 
     },

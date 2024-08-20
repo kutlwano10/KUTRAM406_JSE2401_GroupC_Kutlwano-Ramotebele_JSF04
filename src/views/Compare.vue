@@ -64,7 +64,9 @@ const store = useProductStore();
                 alt="product.name"
                 class="h-32 w-32 mx-auto mb-4 bg-[#ffffff]"
               />
+              <Button text="Remove" :func="()=>store.removeCompareProduct(product.id)"></Button>
             </td>
+            
           </tr>
           <td
               v-for="product in store.compare"
