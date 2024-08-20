@@ -9,7 +9,7 @@ import compare from "../assets/compare.png";
  */
 let props = defineProps({
   product: { type: Object, required: true },
-  price:{type: Object}
+  price:{type: String}
   
 });
 </script>
@@ -61,8 +61,8 @@ let props = defineProps({
         <div
           class="text-base line-clamp-2 font-extrabold text-slate-500 leading-snug"
         >
-          <h2>R{{ product.price }} </h2>
-          <h1>{{ price }}</h1>
+          <h2 class="line-through">R{{ product.price }} </h2>
+          <h1>R {{ price }}</h1>
         </div>
       </div>
       <div class="flex mt-1 space-x-2">

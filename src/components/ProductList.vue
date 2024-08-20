@@ -17,11 +17,13 @@ const store = useProductStore();
 
 const selectedCategory = ref("");
 
-let discountPrice =''
+
 
 const props = defineProps({
   image: Object,
 });
+
+
 
 let displayDiscountProducts =computed(()=>{
       /**Storing Products Randomly */
@@ -30,7 +32,14 @@ let displayDiscountProducts =computed(()=>{
 
       let selectedProducts = randomProducts.slice(0, 5)
       console.log(selectedProducts)
-      selectedProducts.forEach(product=> discountPrice = product.price * 0.9)
+      selectedProducts = selectedProducts.map(product=> {
+       const discountedPrice = (product.price * 0.9).toFixed(2)
+        return {
+          ...product,
+          discountPrice: discountedPrice
+        }
+
+      })
 
       return selectedProducts;
 
@@ -81,6 +90,7 @@ onMounted(() => {
         v-for="product in displayDiscountProducts"
         :key="product.id"
         :product="product"
+        :price="product.discountPrice"
         
         class="flex-shrink-0 w-60"
       />
