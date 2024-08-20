@@ -67,6 +67,7 @@ export const useProductStore = defineStore("product", {
 
       this.isDark = !this.isDark
       localStorage.setItem('theme', this.isDark ? 'darkmode' : 'lightmode')
+      this.applyTheme()
 
     },
     applyTheme() {
@@ -75,6 +76,14 @@ export const useProductStore = defineStore("product", {
       }else {
         document.documentElement.classList.add('lightmode')
       }
+
+    },
+    /**Getting the Theme back to prevent going back to default when Refreshing the page */
+    initTheme() {
+      const savedTheme = localStorage.getItem('theme')
+      this.isDark = savedTheme ==="darkmode" //default
+      this.applyTheme()
+
 
     },
 
