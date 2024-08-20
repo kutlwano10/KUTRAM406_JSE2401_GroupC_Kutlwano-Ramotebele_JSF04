@@ -17,16 +17,30 @@ const store = useProductStore();
 
 const selectedCategory = ref("");
 
+let discountPrice =''
+
 const props = defineProps({
   image: Object,
 });
 
+let displayDiscountProducts =computed(()=>{
+      /**Storing Products Randomly */
+      const randomProducts = [...store.products].sort(()=> 0.5 - Math.random())
+      console.log(randomProducts)
+
+      let selectedProducts = randomProducts.slice(0, 5)
+      console.log(selectedProducts)
+      selectedProducts.forEach(product=> discountPrice = product.price * 0.9)
+
+      return selectedProducts;
+
+    }),
 
 
 /**
  * This will return the filtered out Products from the sortedProducts
  */
-const displayedProducts = computed(() => {
+displayedProducts = computed(() => {
   if (!selectedCategory.value) return store.sortedProducts;
   return store.sortedProducts.filter(
     (product) => product.category === selectedCategory.value
@@ -53,7 +67,6 @@ const handleSearch = (event) => {
 onMounted(() => {
   store.fetchProducts();
   store.fetchCategories();
-  store.applyDiscount()
 });
 </script>
 
@@ -65,10 +78,10 @@ onMounted(() => {
     <!-- PRODUCT CAROUSEL -->
     <div class="flex gap-4 overflow-x-auto scrollbar-hide mx-2">
       <ProductCarousel
-        v-for="product in store.discountProducts"
+        v-for="product in displayDiscountProducts"
         :key="product.id"
         :product="product"
-        :price="store.discountPrice"
+        
         class="flex-shrink-0 w-60"
       />
     </div>
