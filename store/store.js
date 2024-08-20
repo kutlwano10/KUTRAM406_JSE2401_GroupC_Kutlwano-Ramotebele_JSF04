@@ -69,7 +69,14 @@ export const useProductStore = defineStore("product", {
       localStorage.setItem('theme', this.isDark ? 'darkmode' : 'lightmode')
 
     },
-    
+    applyTheme() {
+      if(this.isDark) {
+        document.documentElement.classList.add('darkmode')
+      }else {
+        document.documentElement.classList.add('lightmode')
+      }
+
+    },
 
     async login (username, password) {
       
