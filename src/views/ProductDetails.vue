@@ -4,8 +4,9 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useProductStore } from "../../store/store";
 import ProductSkeleton from "./ProductSkeleton.vue";
-import turnBack from "../assets/turn-back.png";
+
 import Button from "../components/Button.vue";
+import BackButton from "../components/BackButton.vue";
 
 const clickedButton =()=> {
   console.log("I am clicked")
@@ -22,9 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <router-link to=".."
-    ><img class=" w-[30px] " :src="turnBack" alt=""
-  /></router-link>
+  <BackButton/>
   <div v-if="store.loading">
     <ProductSkeleton />
   </div>

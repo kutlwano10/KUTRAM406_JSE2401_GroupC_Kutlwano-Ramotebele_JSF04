@@ -84,7 +84,7 @@ let props = defineProps({
         
       </div>
       <div class="flex justify-end gap-3 space-x-2">
-          <button>
+          <button @click="store.addToCompare(product)">
             <img class="w-8" :src="compare" alt="" />
           </button>
           <button @click="addProductToCart(product)">

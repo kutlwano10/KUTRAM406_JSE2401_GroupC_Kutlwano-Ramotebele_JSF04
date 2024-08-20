@@ -5,6 +5,7 @@ import {ref} from 'vue'
 import { useProductStore } from "../../store/store";
 import Filter from "../components/Filter.vue";
 import Sort from "../components/Sort.vue";
+import BackButton from "../components/BackButton.vue";
 
 
 const store = useProductStore();
@@ -21,6 +22,7 @@ const selectedCategory = ref("");
 </script>
 
 <template>
+    <BackButton/>
   <h1>Wishlist</h1>
   <!-- FILTER & SORT -->
   <div class="md:flex relative mb-14 justify-around gap-20">

@@ -6,6 +6,7 @@ export const useProductStore = defineStore("product", {
     products: [],
     singleProduct: null,
     loading: true,
+    isDark: false,
     error: null,
     initialSort: "default",
     categories: [],
@@ -60,6 +61,15 @@ export const useProductStore = defineStore("product", {
   },
 
   actions: {
+
+    // CHANGING THE THEME
+    toggleTheme () {
+
+      this.isDark = !this.isDark
+      localStorage.setItem('theme', this.isDark ? 'darkmode' : 'lightmode')
+
+    },
+    
 
     async login (username, password) {
       
