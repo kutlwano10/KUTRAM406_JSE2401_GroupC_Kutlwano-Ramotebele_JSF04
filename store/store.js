@@ -66,22 +66,22 @@ export const useProductStore = defineStore("product", {
     toggleTheme () {
 
       this.isDark = !this.isDark
-      localStorage.setItem('theme', this.isDark ? 'darkmode' : 'lightmode')
+      localStorage.setItem('theme', this.isDark ? 'dark' : 'light')
       this.applyTheme()
 
     },
     applyTheme() {
       if(this.isDark) {
-        document.documentElement.classList.add('darkmode')
+        document.documentElement.classList.add('dark')
       }else {
-        document.documentElement.classList.add('lightmode')
+        document.documentElement.classList.add('light')
       }
 
     },
     /**Getting the Theme back to prevent going back to default when Refreshing the page */
     initTheme() {
       const savedTheme = localStorage.getItem('theme')
-      this.isDark = savedTheme ==="darkmode" //default
+      this.isDark = savedTheme ==="dark" //default
       this.applyTheme()
 
 
