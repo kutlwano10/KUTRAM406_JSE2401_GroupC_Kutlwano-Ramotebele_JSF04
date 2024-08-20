@@ -56,7 +56,7 @@ const store = useProductStore();
             <td
               v-for="product in store.compare"
               :key="product.id"
-              class="text-center justify-center bg-white items-center border-b "
+              class="text-center justify-center  bg-white items-center border-b "
             >
             
               <img
@@ -91,7 +91,7 @@ const store = useProductStore();
               :key="product.id"
               class="p-4 border-b"
             >
-              <p class="text-sm text-gray-700">R {{ product.price }}</p>
+              <p class="text-md">R {{ product.price }}</p>
             </td>
           </tr>
         </tbody>

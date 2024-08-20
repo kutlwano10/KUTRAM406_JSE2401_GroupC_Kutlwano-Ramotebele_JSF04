@@ -23,7 +23,7 @@ const selectedCategory = ref("");
 
 <template>
     <BackButton/>
-  <h1>Wishlist</h1>
+
   <!-- FILTER & SORT -->
   <div class="md:flex relative mb-14 justify-around gap-20">
     <Filter :categories="store.categories" @filterChange="handleFilterChange" />

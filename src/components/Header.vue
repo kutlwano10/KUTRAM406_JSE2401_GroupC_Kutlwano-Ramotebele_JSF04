@@ -3,8 +3,13 @@ import { useProductStore } from "../../store/store";
 
 const store = useProductStore();
 
+// onMounted(()=>{
+//   store.initTheme()
+// })
+
 import compare from "../assets/white-compare.png";
 import shoppingLogo from "../assets/shopping-bag.png";
+import { onMounted } from "vue";
 const toggleNavbar = () => {
   const dropDown = document.getElementById("navbar-dropdown");
   dropDown.classList.contains("hidden")
