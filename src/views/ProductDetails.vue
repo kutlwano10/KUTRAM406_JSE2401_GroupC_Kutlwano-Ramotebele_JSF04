@@ -31,8 +31,8 @@ onMounted(() => {
     v-else-if="store.singleProduct"
     class="mt-20 md:mt-32 sm:mt-8 lg:flex lg:items-start lg:max-w-6xl xl:max-w-7xl bottom-20 relative "
   >
-    <div class="mx-auto w-2/5 flex-none">
-      <img :src="store.singleProduct.image" alt="" class="w-[90%] h-[90%]" />
+    <div class="mx-auto  flex dark:bg-white justify-center items-center p-4">
+      <img :src="store.singleProduct.image" alt="" class="w-[90%] h-[90%] " />
     </div>
     <div class="mx-auto w-[90%] space-y-2">
       <h1 class="text-md md:text-4xl lg:text-4xl font-bold">

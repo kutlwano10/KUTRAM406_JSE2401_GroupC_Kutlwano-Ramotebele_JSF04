@@ -174,6 +174,10 @@ export const useProductStore = defineStore("product", {
       this.saveAuthToLocalStorage()
 
     },
+    clearCompare() {
+      this.compare = []
+      this.saveAuthToLocalStorage()
+    },
 
     addToWishlist(product) {
       /**Pushing the Product into the wishlist and saving to local Storage */
