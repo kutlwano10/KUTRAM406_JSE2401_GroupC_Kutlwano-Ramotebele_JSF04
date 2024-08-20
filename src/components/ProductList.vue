@@ -53,6 +53,7 @@ const handleSearch = (event) => {
 onMounted(() => {
   store.fetchProducts();
   store.fetchCategories();
+  store.applyDiscount()
 });
 </script>
 
@@ -64,9 +65,10 @@ onMounted(() => {
     <!-- PRODUCT CAROUSEL -->
     <div class="flex gap-4 overflow-x-auto scrollbar-hide mx-2">
       <ProductCarousel
-        v-for="product in displayedProducts"
+        v-for="product in store.discountProducts"
         :key="product.id"
         :product="product"
+        :price="store.discountPrice"
         class="flex-shrink-0 w-60"
       />
     </div>

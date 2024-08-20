@@ -11,6 +11,7 @@ export const useProductStore = defineStore("product", {
     initialSort: "default",
     categories: [],
     discountProducts : [],
+    discountPrice: '',
     cart: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).cart : [],
     wishlist: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).wishlist : [],
     compare: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).compare : [],
@@ -60,8 +61,21 @@ export const useProductStore = defineStore("product", {
       };
     },
   },
+  
 
   actions: {
+
+    applyDiscount() {
+      /**Storing Products Randomly */
+      const randomProducts = [...this.products].sort(()=> 0.5 - Math.random())
+      console.log(randomProducts)
+
+      const selectedProducts = randomProducts.slice(0, 5)
+      selectedProducts.forEach(item=> this.discountPrice = item.price * 0.9)
+
+      this.discountProducts = selectedProducts;
+
+    },
 
     // CHANGING THE THEME
     toggleTheme () {
