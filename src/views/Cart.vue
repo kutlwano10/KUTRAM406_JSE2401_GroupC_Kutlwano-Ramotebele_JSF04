@@ -3,6 +3,7 @@ import turnBack from "../assets/turn-back.png";
 import { onMounted } from "vue";
 import { useProductStore } from "../../store/store";
 import Button from "../components/Button.vue";
+import remove from "../assets/remove.png"
 import Login from './Login.vue'
 
 const store = useProductStore();
@@ -17,7 +18,7 @@ onMounted(() => {
     ><img class="w-[30px] m-4" :src="turnBack" alt=""
   /></router-link>
   
-  <Button class="" text="Clear Cart" :func="store.clearCart" />
+  <Button class="" text="Clear Cart" :func="store.clearCart" ><img class="w-6" :src="remove"/></Button>
   <div class="relative top-20" v-if="store.cart.length > 0">
     <div class="relative bottom-20  text-black md:p-4 rounded-lg">
       <table class="w-full text-center ">

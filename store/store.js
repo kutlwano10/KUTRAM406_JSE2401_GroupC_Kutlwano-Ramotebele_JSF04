@@ -13,7 +13,7 @@ export const useProductStore = defineStore("product", {
     cart: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).cart : [],
     wishlist: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).wishlist : [],
     compare: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).compare : [],
-    cartCount: [],
+    count: [],
 
     sortOptions: [
       { value: "default", label: "Default" },
@@ -161,13 +161,13 @@ export const useProductStore = defineStore("product", {
 
     /** This function sets all the carts in local Storage*/
     saveAuthToLocalStorage() {
-      localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart, wishlist: this.wishlist ,compare: this.compare}))
+      localStorage.setItem('AuthUser', JSON.stringify({user: this.user, token: this.token, cart: this.cart, wishlist: this.wishlist ,compare: this.compare,}))
     },
 
     addToCompare(product) {
       
       this.compare.push(product);
-      console.log('addtwl')
+      
       this.saveAuthToLocalStorage();
     },
 
@@ -199,17 +199,23 @@ export const useProductStore = defineStore("product", {
     addToCart(product) {
       /**Pushing the Product into the cart and saving to local Storage */
       this.cart.push(product);
+      this.count++
       // localStorage.setItem('AuthUser',JSON.stringify(this.cart));
       this.saveAuthToLocalStorage();
     },
 
     removeCartProduct (productId) {
       this.cart = this.cart.filter(item=> item.id !== productId)
+      if (this.cart !== -1) {
+        this.cart.splice(this.cart, 1)
+        this.count--
+      }
       this.saveAuthToLocalStorage()
 
     }, 
     clearCart() {
       this.cart = [];
+      this.count = 0
       this.saveAuthToLocalStorage()
       
     },

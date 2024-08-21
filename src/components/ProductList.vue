@@ -68,6 +68,7 @@ const handleSearch = (event) => {
 onMounted(() => {
   store.fetchProducts();
   store.fetchCategories();
+  store.count
 });
 </script>
 
@@ -121,6 +122,7 @@ onMounted(() => {
         v-for="product in store.wishlist"
         :key="product.id"
         :product="product"
+        :price="product.price"
         class="flex-shrink-0 w-64"
         ></ProductCarousel
       >

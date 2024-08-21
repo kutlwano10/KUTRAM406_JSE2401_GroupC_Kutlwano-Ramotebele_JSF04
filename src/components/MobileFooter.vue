@@ -3,6 +3,9 @@ import cart from "../assets/white-cart.png";
 import compare from "../assets/white-compare.png";
 import wishlist from "../assets/white-wishlist.png";
 import profile from "../assets/white-profile.png";
+import { useProductStore } from "../../store/store";
+
+const store = useProductStore()
 </script>
 
 <template>
@@ -13,11 +16,11 @@ import profile from "../assets/white-profile.png";
           :to="`/cart`"
           class="text-white flex-col flex items-center relative"
         >
-          <div class="t-0 absolute left-3 -top-4">
-            <p
+          <div  class="t-0 absolute left-3 -top-4">
+            <p v-if="store.count > 0"
               class="flex h-2 w-2 items-center justify-center rounded-full bg-[#FB8500] p-3 text-xs text-white"
             >
-              2
+              {{store.count}}
             </p>
           </div>
           <img class="w-7" :src="cart" alt="" />
@@ -35,7 +38,7 @@ import profile from "../assets/white-profile.png";
             <p
               class="flex h-2 w-2 items-center justify-center rounded-full bg-[#FB8500] p-3 text-xs text-white"
             >
-              2
+              {{2}}
             </p>
           </div>
           <img class="w-7" :src="wishlist" alt="" />
