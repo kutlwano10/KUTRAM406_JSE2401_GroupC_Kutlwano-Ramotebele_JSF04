@@ -4,6 +4,7 @@ import { onMounted } from "vue";
 import { useProductStore } from "../../store/store";
 import Button from "../components/Button.vue";
 import remove from "../assets/remove.png"
+import removeYellow from '../assets/remove-yellow.png'
 import Login from './Login.vue'
 
 const store = useProductStore();
@@ -34,7 +35,7 @@ onMounted(() => {
         <tbody v-for="product in store.cart">
           <tr class="border-b border-gray-600">
             <td class="md:p-4 lg:p-4">
-              <button @click="()=>store.removeCartProduct(product.id)" class="text-red-500 text-xl cursor-pointer">X</button>
+              <button @click="()=>store.removeCartProduct(product)"><img class="w-16 p-2" :src="removeYellow" alt="" srcset=""></button>
             </td>
             <td class="flex items-center ">
               <img
