@@ -123,7 +123,7 @@ const toggleNavbar = () => {
                   <p
                     class="flex h-2 w-2 items-center justify-center rounded-full bg-[#FB8500] p-3 text-xs text-white"
                   >
-                    2
+                    {{ store.count }}
                   </p>
                 </div>
                 <svg

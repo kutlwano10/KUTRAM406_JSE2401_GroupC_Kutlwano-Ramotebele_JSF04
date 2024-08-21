@@ -78,7 +78,7 @@ onMounted(() => {
     <div v-if="store.error">{{ store.error }}</div>
     <Login />
     <!-- PRODUCT CAROUSEL DISCOUNT-->
-    <div class="flex gap-4 overflow-x-auto scrollbar-hide mx-auto">
+    <div class="flex gap-4 overflow-x-auto scrollbar-hide mx-[5%]">
       <ProductCarousel
         v-for="product in displayDiscountProducts"
         :key="product.id"
@@ -117,7 +117,7 @@ onMounted(() => {
   </div>
 
   <!-- PRODUCT CAROUSEL MY WISHLIST-->
-  <div class="flex gap-4  overflow-x-auto scrollbar-hide mx-auto">
+  <div class="flex gap-4  overflow-x-auto scrollbar-hide mx-[5%]">
       <ProductCarousel
         v-for="product in store.wishlist"
         :key="product.id"

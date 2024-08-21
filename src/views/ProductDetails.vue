@@ -4,6 +4,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useProductStore } from "../../store/store";
 import ProductSkeleton from "./ProductSkeleton.vue";
+import cart from "../assets/white-cart.png"
 
 import Button from "../components/Button.vue";
 import BackButton from "../components/BackButton.vue";
@@ -70,7 +71,7 @@ onMounted(() => {
       <div class="border p-4">
         <p class="">{{ store.singleProduct.description }}</p>
       </div>
-      <Button text="Add to Cart" ></Button>
+      <Button :func="()=>store.addToCart(product)" text="Add to Cart"><img class="w-6 " :src="cart" alt="" ></Button>
     </div>
   </div>
 </template>

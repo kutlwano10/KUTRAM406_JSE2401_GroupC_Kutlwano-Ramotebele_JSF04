@@ -23,7 +23,7 @@ let props = defineProps({
   >
     <div class="flex align-center p-2">
       <slot></slot>
-      <button class="relative left-[75%]">
+      <button @click="store.addToWishlist(product)" class="relative left-[75%]">
         <svg
           class="h-5 w-5 text-[#FFB703] hover:fill-[#FFB703]"
           aria-hidden="true"
@@ -77,7 +77,7 @@ let props = defineProps({
           </span>
         </div>
         <div class="justify-end space-x-2">
-          <button>
+          <button @click="store.addToCompare(product)">
             <img class="w-8" :src="compare" alt="" />
           </button>
           <button @click="store.addToCart(product)">
