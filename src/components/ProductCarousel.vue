@@ -4,6 +4,8 @@ import { RouterLink } from "vue-router";
 import cart from "../assets/cart.png";
 import compare from "../assets/compare.png";
 
+import { useProductStore } from "../../store/store";
+const store = useProductStore()
 /**
  * define Props to accept Product Data
  */
@@ -17,12 +19,13 @@ let props = defineProps({
 <template>
   
   <div
-    class="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-[4px] overflow-hidden"
+    class="flex p-2 flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-[4px] overflow-hidden"
   >
     <div class="flex align-center p-2">
-      <button class="relative left-[85%]">
+      <slot></slot>
+      <button class="relative left-[75%]">
         <svg
-          class="h-5 w-5 hover:fill-[#FFB703]"
+          class="h-5 w-5 text-[#FFB703] hover:fill-[#FFB703]"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -46,7 +49,7 @@ let props = defineProps({
       ><img class="object-contain h-32" :src="product.image" alt="Course 01"
     /></router-link>
 
-    <div class="flex-1 flex flex-col p-6">
+    <div class="flex-1 flex flex-col p-2">
       <div class="flex-1">
         <header class="mb-2 flex-2">
           <h2 class="text-lg line-clamp-2 font-extrabold leading-snug">
@@ -77,7 +80,7 @@ let props = defineProps({
           <button>
             <img class="w-8" :src="compare" alt="" />
           </button>
-          <button @click="updateCart">
+          <button @click="store.addToCart(product)">
             <img class="w-8" :src="cart" alt="" />
           </button>
         </div>

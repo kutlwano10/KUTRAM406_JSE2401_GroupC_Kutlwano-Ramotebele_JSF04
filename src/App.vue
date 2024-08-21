@@ -12,7 +12,7 @@ const store = useProductStore
 <template class="">
   <Header ></Header>
   <main class="">
-    <router-view @showLogin="store.showLoginModal = true"></router-view>
+    <router-view ></router-view>
     <Login/>
     
   </main>

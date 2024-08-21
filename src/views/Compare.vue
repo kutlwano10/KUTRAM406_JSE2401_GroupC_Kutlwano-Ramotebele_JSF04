@@ -17,8 +17,8 @@ const store = useProductStore();
   <div class="compare-container p-6 mt-20 relative bottom-20">
     
     <h2 class="text-2xl font-bold mb-6 text-center">Product Comparison</h2>
-    <LogInPrompt v-if="!store.isLoggedin" @showLogin="$emit('showLogin')"/>
-    <div v-else class="overflow-x-auto">
+    <!-- <LogInPrompt v-if="!store.isLoggedin" @showLogin="$emit('showLogin')"/> -->
+    <div  class="overflow-x-auto">
       <table class="min-w-full border border-gray-200">
         <thead>
           <tr class="dark">

@@ -25,12 +25,12 @@ const selectedCategory = ref("");
     <BackButton/>
 
   <!-- FILTER & SORT -->
-  <div class="md:flex relative mb-14 justify-around gap-20">
+  <div class="md:flex relative mb-20 justify-around gap-20 ">
     <Filter :categories="store.categories" @filterChange="handleFilterChange" />
     <Sort />
   </div>
   <div
-    class="lg:max-h-[130rem] relative bottom-14 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 justify-center md:grid-cols-3 lg:mx-[9%] items-center mx-2 lg:max-w-none my-4"
+    class="lg:max-h-[130rem] relative bottom-14 max-w-xl  md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-4 justify-center md:grid-cols-3 lg:mx-[9%] items-center mx-2 lg:max-w-none my-4"
   >
     <ProductCard
       v-for="product in store.wishlist"

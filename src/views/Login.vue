@@ -1,59 +1,66 @@
 <script setup>
-import {onMounted, ref} from "vue"
-import { useProductStore } from '../../store/store';
-import Button from '../components/Button.vue';
+import { onMounted, ref } from "vue";
+import { useProductStore } from "../../store/store";
+import Button from "../components/Button.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 const store = useProductStore();
 
-const loginError = ref('')
+const loginError = ref("");
 
-onMounted(()=>{
-  store.initializeAuth()
-})
+onMounted(() => {
+  store.initializeAuth();
+});
 
 const login = async () => {
+  if (!store.username || !store.password) {
+    loginError.value = "Please enter both username and password";
+    return;
+  }
+  store.loading = true;
+  loginError.value = "";
 
-    if(!store.username || !store.password) {
-        loginError.value ="Please enter both username and password"
-        return
+  /**I am checking if the Correct data is checked and i want to get the token */
+
+  try {
+    const successfulLoggedIn = await store.login(
+      store.username,
+      store.password
+    );
+
+    if (successfulLoggedIn) {
+      store.showLoginModal = false;
+      const intendedPath = router.currentRoute.value.fullPath;
+      if (intendedPath !== "/") {
+        router.push(intendedPath);
+      }
+      console.log("Login Successful, Token", store.token);
+    } else {
+      loginError.value = "Invalid username or password";
     }
-    store.loading = true
-    loginError.value = ''
-
-    /**I am checking if the Correct data is checked and i want to get the token */
-
-    try {
-        const successfulLoggedIn = await store.login(store.username, store.password)
-        
-        if (successfulLoggedIn) {
-            store.showLoginModal = false
-            console.log('Login Successful, Token', store.token)
-        }else {
-            loginError.value = 'Invalid username or password'
-        }
-        
-    } catch (error) {
-        loginError.value = "An error occured . Please try again ."
-        
-    } finally {
-        store.loading =false
-    }
-}
-
+  } catch (error) {
+    loginError.value = "An error occured . Please try again .";
+  } finally {
+    store.loading = false;
+  }
+};
 </script>
-
 
 <template>
   <div v-if="store.showLoginModal" class="modal">
-    <div class="modal-content flex flex-col text-center justify-center gap-4 items-center">
+    <div
+      class="modal-content flex flex-col text-center justify-center gap-4 items-center"
+    >
       <h2 class="font-extrabold text-[2rem]">Login</h2>
       <label for="username">Username :</label>
       <input v-model="store.username" placeholder="Username" />
       <label for="username">Password :</label>
       <input v-model="store.password" type="password" placeholder="Password" />
-      <Button class="text-lg" text="Sign In" :func="login"/>
+      <Button class="text-lg" text="Sign In" :func="login" />
       <button @click="store.showLoginModal = false">Close</button>
       <p v-if="loginError">{{ loginError }}</p>
-      
     </div>
   </div>
 </template>
@@ -67,7 +74,7 @@ const login = async () => {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -81,11 +88,10 @@ const login = async () => {
 }
 
 input {
-    text-align: center;
-    border: solid 1px gray;
-    border-radius: 4px;
-    padding: 3px;
-    width: 60%;
-
+  text-align: center;
+  border: solid 1px gray;
+  border-radius: 4px;
+  padding: 3px;
+  width: 60%;
 }
 </style>

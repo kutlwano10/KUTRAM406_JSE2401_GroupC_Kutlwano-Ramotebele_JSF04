@@ -30,7 +30,14 @@ import profile from "../assets/white-profile.png";
         </router-link
         >
         <router-link :to="`/wishlist`"
-         class="text-white flex-col flex items-center">
+         class="text-white flex-col flex items-center relative">
+         <div class="t-0 absolute left-3 -top-4">
+            <p
+              class="flex h-2 w-2 items-center justify-center rounded-full bg-[#FB8500] p-3 text-xs text-white"
+            >
+              2
+            </p>
+          </div>
           <img class="w-7" :src="wishlist" alt="" />
           <h1 class="">Wishlist</h1>
         </router-link

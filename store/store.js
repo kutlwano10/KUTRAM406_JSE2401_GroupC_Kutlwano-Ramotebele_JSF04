@@ -13,7 +13,7 @@ export const useProductStore = defineStore("product", {
     cart: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).cart : [],
     wishlist: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).wishlist : [],
     compare: JSON.parse(localStorage.getItem('AuthUser'))? JSON.parse(localStorage.getItem('AuthUser')).compare : [],
-
+    cartCount: [],
 
     sortOptions: [
       { value: "default", label: "Default" },

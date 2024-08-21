@@ -70,7 +70,7 @@ onMounted(() => {
       <div class="border p-4">
         <p class="">{{ store.singleProduct.description }}</p>
       </div>
-      <Button text="ADD TO CARD" :func="clickedButton"/>
+      <Button text="Add to Cart" ></Button>
     </div>
   </div>
 </template>

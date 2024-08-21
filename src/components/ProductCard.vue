@@ -31,7 +31,7 @@ let props = defineProps({
     <div class="flex align-center p-2">
       <button class="relative left-[85%]" @click="func" >
         <svg 
-          class="h-5 w-5 hover:fill-[#FFB703]"
+          class="h-5 w-5 text-[#FFB703] hover:fill-[#FFB703]"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
